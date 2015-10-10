@@ -1,3 +1,14 @@
 <template name="index">
   <h2>I am Index Content</h2>
+  <ul class="chatroomList">
+    {{#each trends}}
+      {{> roomItems}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="roomItems">
+  <li class="roomName">
+    <a href="{{chatUrl}}">{{name}}</a>
+  </li>
 </template>
