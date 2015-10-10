@@ -9,6 +9,9 @@ Template.index.helpers({
 
 Template.roomItems.events({
   'click .roomName': function (event, template) {
-    console.log(event, this);
+    event.preventDefault();
+
+    console.log(this.chatUrl);
+    Router.go(this.chatUrl);
   }
 });
