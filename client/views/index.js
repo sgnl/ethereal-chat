@@ -7,6 +7,8 @@ Template.index.helpers({
   }
 });
 
-Template.index.events({
-
+Template.roomItems.events({
+  'click .roomName': function (event, template) {
+    console.log(event, this);
+  }
 });
