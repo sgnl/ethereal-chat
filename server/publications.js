@@ -4,6 +4,6 @@ Meteor.publish('chatrooms', function(){
 
 
 // server side only?
-Meteor.publish('hashtags', function(){
-  return Hashtags.find();
+Meteor.publish('trends', function(){
+  return Trends.find();
 });

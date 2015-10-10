@@ -1,2 +1,2 @@
 Meteor.subscribe('chatrooms');
-Meteor.subscribe('hashtags');
+Meteor.subscribe('trends');

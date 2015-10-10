@@ -2,8 +2,8 @@ Template.index.helpers({
   'chatrooms': function(){
     return Chatrooms.find();
   },
-  'hashtags': function(){
-    return Hashtags.find();
+  'trends': function(){
+    return Trends.find();
   }
 });
 
