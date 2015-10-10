@@ -2,13 +2,13 @@ Meteor.startup(function () {
   if (Hashtags.find().count() === 0) {
     var trendingHashtags = [
       {
-        hashtag: '#selfie'
+        name: '#selfie'
       },
       {
-        hashtag: '#builtwithmeteor'
+        name: '#builtwithmeteor'
       },
       {
-        hashtag: '#devleague'
+        name: '#devleague'
       }
     ];
     for (var i = 0; i < trendingHashtags.length; i++){
