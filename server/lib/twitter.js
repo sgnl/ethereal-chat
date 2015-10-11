@@ -37,7 +37,12 @@ getTrends = function getTrends(woeid, callback) {
 };
 
 function createChatroom (chatOptions) {
-  return Chatrooms.insert({ name: chatOptions.name, roomUrl: chatOptions.roomUrl, entries: [] });
+  return Chatrooms.insert({
+    name: chatOptions.name,
+    roomUrl: chatOptions.roomUrl,
+    entries: [],
+    createdAt: Date.now()
+  });
 }
 
 function getName (thing) {

@@ -1,7 +1,9 @@
 <template name="chatroom">
   <header>
-    <h1><a href="">{{name}}</a></h1>
-    <button id="exitChatroom" class="ui button">Exit</button>
+    <h1>
+      <a href>{{name}}</a>
+      <a href id="exitChatroom"><i class="remove icon"></i></a>
+    </h1>
   </header>
   <ul>
     {{#each entries}}

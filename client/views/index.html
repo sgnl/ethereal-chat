@@ -3,14 +3,17 @@
     <h1 class="ui header centered">Ethereal</h1>
   </header>
   {{#if showChatroom}}
-    {{> chatroom}}
-  {{else}}
-    <section class="ui cards grid container centered columns">
-      {{#each chatrooms}}
-        {{> roomItems}}
-      {{/each}}
-    </section>
+    <div class="overlay">
+      <section class="ui feed">
+        {{> chatroom}}
+      </section>
+    </div>
   {{/if}}
+  <section class="ui cards grid container centered columns">
+    {{#each chatrooms}}
+      {{> roomItems}}
+    {{/each}}
+  </section>
 </template>
 
 <template name="roomItems">
@@ -20,7 +23,7 @@
         <h2 class="trend-name">{{name}}</h2>
       </div>
       <div class="meta">
-        <p>1 day Trending</p>
+        <p>{{trendingDuration}}</p>
       </div>
     </div>
     <div class="content">

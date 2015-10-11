@@ -17,11 +17,15 @@ Template.index.helpers({
 Template.roomItems.helpers({
   messages: function() {
     return _.last(Chatrooms.findOne({name: this.name}).entries, 4);
+  },
+  trendingDuration: function () {
+    return moment(this.createdAt).fromNow(true) + " trending";
   }
 });
 
 Template.roomItems.events({
   'click .join-chat': function (evt, tmpl) {
     Session.set(App.CHATROOM_NAME, this.name);
+    $('body').toggleClass('disable-scroll');
   }
 });

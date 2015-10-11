@@ -1,20 +1,82 @@
-@accent: #8BC6B9;
+@backgroundColor: white;
+@grey: #616161;
+@green: #8BC6B9;
+@accent: @green;
 @cardText: #FFF;
 
 body {
   padding: 40px 0;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-              url('/images/ethereal_bg.jpg');
+              url('/images/ethereal_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.overlay {
+  background-color: fadeout(@backgroundColor, 4%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+
+  .feed {
+    margin: 40px auto;
+  }
+}
+
+.feed {
+  max-width: 450px;
+  overflow: auto;
+  position: relative;
+
+  @headerHeight: 40px;
+  @footerHeight: 40px;
+
+  header, footer {
+    position: absolute;
+    width: 100%;
+  }
+
+  header {
+    height: @headerHeight;
+    top: 0;
+  }
+
+  footer {
+    height: @footerHeight;
+    bottom:0;
+  }
+
+  #exitChatroom {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+  }
+
+  ul {
+    margin-top: @headerHeight + 20px;
+    margin-bottom: @footerHeight + 20px;
+    height: 500px;
+    overflow-y: auto;
+  }
+
+  h1 {
+    color: @grey;
+    font-size: 30px;
+    font-weight: 400;
+  }
 }
 
 .top-header {
   margin-bottom: 40px;
   .ui.header {
-    color: lighten(@accent, 10%);
+    color: lighten(@accent, 5%);
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 8px;
-    font-weight: 500;
+    font-weight: 600;
   }
 }
 
@@ -30,16 +92,25 @@ h2.trend-name {
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 2px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .card-activity-content {
-  min-height: 100px;
+  min-height: 150px;
   color: @cardText;
   .event {
     margin-bottom: 10px;
     word-wrap: break-word;
     text-align: left;
+    &:nth-last-child(4) {
+      color: rgba(255, 255, 255, 0.3);
+    }
+    &:nth-last-child(3) {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    &:nth-last-child(2) {
+      color: rgba(255, 255, 255, 0.7);
+    }
     p {
       font-weight: 100;
     }
@@ -54,10 +125,17 @@ h2.trend-name {
   cursor: pointer;
   &.ui.card {
     background: rgba(255, 255, 255, 0.4);
+    &:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
   }
   &.ui.card {
-    border-radius: 0;
+    border-radius: 2px;
   }
+}
+
+.disable-scroll {
+  overflow-y: hidden;
 }
 
 .ui.cards > .card,
@@ -70,3 +148,7 @@ h2.trend-name {
   border-top: 0;
 }
 
+.ui.card {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}

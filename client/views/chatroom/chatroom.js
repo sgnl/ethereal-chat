@@ -3,10 +3,19 @@ Template.chatroom.created = function () {
 };
 
 Template.chatroom.rendered = function () {
-
+  var $input = this.find('input');
+  if ($input) {
+    $input.focus();
+  }
 };
 
 Template.chatroom.events({
+  'keyup input': function (event) {
+    if (Session.get(App.CHATROOM_NAME) && event.keyCode === 27) {
+      Session.set(App.CHATROOM_NAME, false);
+      $('body').toggleClass('disable-scroll');
+    }
+  },
   'submit form': function (evt, tmpl) {
     evt.preventDefault();
     var form = evt.target;
@@ -16,11 +25,15 @@ Template.chatroom.events({
       isTweet: false
     };
     var chatroom = Chatrooms.findOne({name: Session.get(App.CHATROOM_NAME)});
-    Chatrooms.update(chatroom._id, {$push: { entries: newMessage }});
+    Chatrooms.update(chatroom._id, {$push: { entries: newMessage }}, null, function () {
+      var $chat = $('.feed ul');
+      $chat.scrollTop($chat.prop('scrollHeight'));
+    });
     form.reset();
   },
   'click #exitChatroom': function(evt, tmpl) {
     Session.set(App.CHATROOM_NAME, false);
+    $('body').toggleClass('disable-scroll');
   }
 });
 
