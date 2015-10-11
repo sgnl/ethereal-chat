@@ -1,19 +1,44 @@
 <template name="index">
-  <h2>Ethereal</h2>
-  <section class="grid">
-    {{#each chatrooms}}
-      {{> roomItems}}
-    {{/each}}
-  </section>
+  <header class="top-header">
+    <h1 class="ui header centered">Ethereal Chat</h1>
+  </header>
+  {{#if showChatroom}}
+    {{> chatroom}}
+  {{else}}
+    <section class="ui cards grid container centered columns">
+      {{#each chatrooms}}
+        {{> roomItems}}
+      {{/each}}
+    </section>
+  {{/if}}
 </template>
 
 <template name="roomItems">
-  <a href="{{roomUrl}}">
-    <article class="grid-item">
-      <h2>{{name}}</h2>
-      {{#each messages}}
-        <p>{{message}}</p>
-      {{/each}}
-    </article>
-  </a>
+  <article class="ui olive card grid-item join-chat">
+    <div class="content">
+      <div class="header">
+        <h2>{{name}}</h2>
+      </div>
+      <div class="meta">
+        1 day Trending
+      </div>
+    </div>
+    <div class="content">
+      <div class="ui small feed">
+        <h4 class="ui sub header small">Activity</h4>
+        <div class="content card-activity-content">
+          {{#each messages}}
+            <div class="event">
+              <div class="content">
+                <div class="summary">
+                  <p>{{message}}</p>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <span class="ui button">Join the Chat!</span>
+  </article>
 </template>

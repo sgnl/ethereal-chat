@@ -7,21 +7,30 @@ Template.chatroom.rendered = function () {
 };
 
 Template.chatroom.events({
-  "submit form": function (event) {
-    event.preventDefault();
-    var form = event.target;
+  'submit form': function (evt, tmpl) {
+    evt.preventDefault();
+    var form = evt.target;
     var newMessage = {
       timestamp: Date.now(),
       message: form.message.value,
       isTweet: false
     };
-    Chatrooms.update(this._id, {$push: { entries: newMessage }});
+    var chatroom = Chatrooms.findOne({name: Session.get(App.CHATROOM_NAME)});
+    Chatrooms.update(chatroom._id, {$push: { entries: newMessage }});
     form.reset();
+  },
+  'click #exitChatroom': function(evt, tmpl) {
+    Session.set(App.CHATROOM_NAME, false);
   }
 });
 
-// Already in data context
 Template.chatroom.helpers({
+  name: function() {
+    return Chatrooms.findOne({name: Session.get(App.CHATROOM_NAME)}).name;
+  },
+  entries: function() {
+    return Chatrooms.findOne({name: Session.get(App.CHATROOM_NAME)}).entries;
+  }
 });
 
 
