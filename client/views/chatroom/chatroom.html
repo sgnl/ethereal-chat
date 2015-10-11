@@ -1,3 +1,29 @@
 <template name="chatroom">
-  <h1>You are in the chatroom for {{chatroomName}}</h1>
+  <header>
+    <h1><a href="">{{name}}</a></h1>
+  </header>
+  <ul>
+    {{#each entries}}
+      {{#if isTweet}}
+        {{> tweet}}
+      {{else}}
+        {{> message}}
+      {{/if}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="message">
+  <li>
+    <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_4_normal.png" alt="" class="avatar">
+    <p>{{message}}</p>
+    <span>{{timestamp}}</span>
+  </li>
+</template>
+
+<template name="tweet">
+  <li>
+    <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_2_normal.png" alt="" class="avatar">
+    <span>{{timestamp}}</span>
+  </li>
 </template>
