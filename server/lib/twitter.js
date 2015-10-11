@@ -18,5 +18,5 @@ insertTrends = function insertTrends (woeid) {
 };
 
 function createChatroom (chatOptions) {
-  Chatrooms.insert({ name: chatOptions.name, entries: fakeEntries });
+  Chatrooms.insert({ name: chatOptions.name, entries: [] });
 }
