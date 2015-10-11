@@ -6,6 +6,20 @@ Template.chatroom.rendered = function () {
 
 };
 
+Template.chatroom.events({
+  "submit form": function (event) {
+    event.preventDefault();
+    var form = event.target;
+    var newMessage = {
+      timestamp: Date.now(),
+      message: form.message.value,
+      isTweet: false
+    };
+    Chatrooms.update(this._id, {$push: { entries: newMessage }});
+    form.reset();
+  }
+});
+
 // Already in data context
 Template.chatroom.helpers({
 });
