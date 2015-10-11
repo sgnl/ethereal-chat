@@ -11,6 +11,7 @@ insertTrends = function insertTrends (woeid) {
       var trends = data[0].trends;
       for (var i = 0 ; i < trends.length; i++) {
         var currentTrend = trends[i];
+        currentTrend.roomUrl = '/room/' + encodeURIComponent(currentTrend.name);
         Trends.insert(currentTrend);
         createChatroom({ name: currentTrend.name });
       }
@@ -18,5 +19,5 @@ insertTrends = function insertTrends (woeid) {
 };
 
 function createChatroom (chatOptions) {
-  Chatrooms.insert({ name: chatOptions.name, entries: fakeEntries });
+  Chatrooms.insert({ name: chatOptions.name, entries: [] });
 }

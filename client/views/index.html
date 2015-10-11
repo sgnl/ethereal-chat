@@ -1,14 +1,16 @@
 <template name="index">
-  <h2>I am Index Content</h2>
-  <ul class="chatroomList">
+  <h2>Ethereal</h2>
+  <section class="grid">
     {{#each trends}}
       {{> roomItems}}
     {{/each}}
-  </ul>
+  </section>
 </template>
 
 <template name="roomItems">
-  <li class="roomName">
-    <a href="{{chatUrl}}">{{name}}</a>
-  </li>
+  <a href="{{roomUrl}}">
+    <article class="grid-item">
+      <h2>{{name}}</h2>
+    </article>
+  </a>
 </template>
