@@ -1,23 +1,49 @@
 /**
- * Load trends into collection
+ * Load create chatrooms
  * @params woeid - Location to pull in trends from
  */
-insertTrends = function insertTrends (woeid) {
-  var DEFAULT_WOEID = 1; //Global
-    Twitter.get('trends/place', { id: woeid || DEFAULT_WOEID }, Meteor.bindEnvironment(function (err, data, response) {
-      if (err) {
-        // Render 404 page? Waiting, idk?
-      }
-      var trends = data[0].trends;
-      for (var i = 0 ; i < trends.length; i++) {
-        var currentTrend = trends[i];
-        currentTrend.roomUrl = '/room/' + encodeURIComponent(currentTrend.name);
-        Trends.insert(currentTrend);
-        createChatroom({ name: currentTrend.name });
-      }
-    }),function () { console.error('Failed to bind environment'); });
+updateChatrooms = function updateChatrooms (woeid) {
+  woeid =  woeid || 1; // default global trends
+  getTrends(woeid, function (err, data, response) {
+    if (err) {
+      // Render 404 page? Waiting, idk?
+      console.error(err);
+      return;
+    }
+    var trends = data[0].trends;
+    var chatrooms = Chatrooms.find({});
+
+    var trendNames = trends.map(getName);
+    var chatroomNames = chatrooms.map(getName);
+
+    var remove = _.difference(chatroomNames, trendNames);
+    var add = _.difference(trendNames, chatroomNames);
+    console.log("have: ", chatroomNames);
+    console.log("trends: ", trendNames);
+    console.log("remove ", remove.join(", "));
+    console.log("add ", add.join(", "));
+    Chatrooms.remove({name: { $in: remove } });
+
+    for (var i = 0 ; i < add.length; i++) {
+      var currentTrend = { name: add[i] };
+      currentTrend.roomUrl = '/room/' + encodeURIComponent(currentTrend.name);
+      createChatroom(currentTrend);
+    }
+  });
+};
+
+getTrends = function getTrends(woeid, callback) {
+  return Twitter.get('trends/place',
+    { id: woeid || DEFAULT_WOEID },
+    Meteor.bindEnvironment(callback,
+    function () { console.error('Failed to bind environment'); })
+  );
 };
 
 function createChatroom (chatOptions) {
-  Chatrooms.insert({ name: chatOptions.name, entries: [] });
+  return Chatrooms.insert({ name: chatOptions.name, roomUrl: chatOptions.roomUrl, entries: [] });
+}
+
+function getName (thing) {
+  return thing.name;
 }
