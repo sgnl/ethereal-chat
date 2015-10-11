@@ -45,7 +45,8 @@ Template.chatroom.helpers({
     return Chatrooms.findOne({name: Session.get(App.CHATROOM_NAME)}).entries;
   },
   trendingDuration: function () {
-    return moment(this.createdAt).fromNow(true) + " trending";
+    var createdAt = Chatrooms.findOne({name: Session.get(App.CHATROOM_NAME)}).createdAt;
+    return moment(createdAt).fromNow(true) + " trending";
   }
 });
 
