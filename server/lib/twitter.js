@@ -11,8 +11,9 @@ insertTrends = function insertTrends (woeid) {
       var trends = data[0].trends;
       for (var i = 0 ; i < trends.length; i++) {
         var currentTrend = trends[i];
+        currentTrend.roomUrl = '/room/' + encodeURIComponent(currentTrend.name);
         Trends.insert(currentTrend);
-        createChatroom({ name: currentTrend.name });
+        createChatroom({ name: currentTrend.name, roomUrl: currentTrend.roomUrl });
       }
     }),function () { console.error('Failed to bind environment'); });
 };

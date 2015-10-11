@@ -1,6 +1,25 @@
 /* CSS declarations go here */
 // @import "settings";
 
-body {
-  background-color: red;
+.container {
+  width: 975px;
+  margin: 0 auto;
+}
+
+.grid {
+
+  .grid-item {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 300px;
+    min-height: 200px;
+    margin: 0 20px 20px 0;
+    border: 2px grey solid;
+    text-align: center;
+    vertical-align: top;
+
+    h2 {
+      // font-size:
+    }
+  }
 }
