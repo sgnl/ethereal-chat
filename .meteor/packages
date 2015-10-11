@@ -20,5 +20,6 @@ insecure                # Allow all DB writes from clients (for prototyping)
 iron:router
 mrt:twit
 momentjs:moment
+mrt:cron-tick
 semantic:ui
 flemay:less-autoprefixer
