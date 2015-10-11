@@ -2,39 +2,43 @@
   <header class="top-header">
     <h1 class="ui header centered">Ethereal Chat</h1>
   </header>
-  <section class="ui cards grid container centered columns">
-    {{#each trends}}
-      {{> roomItems}}
-    {{/each}}
-  </section>
+  {{#if showChatroom}}
+    {{> chatroom}}
+  {{else}}
+    <section class="ui cards grid container centered columns">
+      {{#each trends}}
+        {{> roomItems}}
+      {{/each}}
+    </section>
+  {{/if}}
 </template>
 
 <template name="roomItems">
-    <a class="ui olive card grid-item" href="{{roomUrl}}">
-      <div class="content">
-        <div class="header">
-          <h2>{{name}}</h2>
-        </div>
-        <div class="meta">
-          1 day Trending
-        </div>
+  <article class="ui olive card grid-item join-chat">
+    <div class="content">
+      <div class="header">
+        <h2>{{name}}</h2>
       </div>
-      <div class="content">
-        <div class="ui small feed">
-          <h4 class="ui sub header small">Activity</h4>
-          <div class="content card-activity-content">
-            {{#each messages}}
-              <div class="event">
-                <div class="content">
-                  <div class="summary">
-                    <p>{{message}}</p>
-                  </div>
+      <div class="meta">
+        1 day Trending
+      </div>
+    </div>
+    <div class="content">
+      <div class="ui small feed">
+        <h4 class="ui sub header small">Activity</h4>
+        <div class="content card-activity-content">
+          {{#each messages}}
+            <div class="event">
+              <div class="content">
+                <div class="summary">
+                  <p>{{message}}</p>
                 </div>
               </div>
-            {{/each}}
-          </div>
+            </div>
+          {{/each}}
+        </div>
       </div>
-      </div>
-      <button class="ui button">Join the Chat!</button>
-    </a>
+    </div>
+    <span class="ui button">Join the Chat!</span>
+  </article>
 </template>

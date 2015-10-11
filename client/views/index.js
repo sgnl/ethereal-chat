@@ -1,8 +1,15 @@
+Template.index.created = function() {
+  Session.set(App.CHATROOM_NAME, false);
+};
+
 Template.index.helpers({
-  'chatrooms': function(){
+  showChatroom: function() {
+    return Session.get(App.CHATROOM_NAME);
+  },
+  chatrooms: function() {
     return Chatrooms.find();
   },
-  'trends': function(){
+  trends: function() {
     return Trends.find();
   }
 });
@@ -14,9 +21,7 @@ Template.roomItems.helpers({
 });
 
 Template.roomItems.events({
-  'click .roomName': function (event, template) {
-    event.preventDefault();
-
-    Router.go(this.roomUrl);
+  'click .join-chat': function (evt, tmpl) {
+    Session.set(App.CHATROOM_NAME, this.name);
   }
 });
