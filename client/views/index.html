@@ -1,6 +1,6 @@
 <template name="index">
   <h2>Ethereal</h2>
-  <section class="grid">
+  <section class="ui cards center grid">
     {{#each trends}}
       {{> roomItems}}
     {{/each}}
@@ -8,12 +8,33 @@
 </template>
 
 <template name="roomItems">
-  <a href="{{roomUrl}}">
-    <article class="grid-item">
-      <h2>{{name}}</h2>
-      {{#each messages}}
-        <p>{{message}}</p>
-      {{/each}}
+  <!-- <a href="{{roomUrl}}"> -->
+    <article class="card grid-item">
+      <div class="content">
+        <div class="header">
+          <h2>{{name}}</h2>
+        </div>
+        <div class="meta">
+          1 day Trending
+        </div>
+      </div>
+      <div class="content">
+        <div class="ui small feed">
+          <h4 class="ui sub header">Activity</h4>
+          <div class="content">
+            {{#each messages}}
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <p>{{message}}</p>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+      </div>
+      </div>
+      <a class="ui button" href="{{roomUrl}}">Join the Chat!</a>
     </article>
-  </a>
+  <!-- </a> -->
 </template>
