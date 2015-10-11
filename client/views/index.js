@@ -23,5 +23,6 @@ Template.roomItems.helpers({
 Template.roomItems.events({
   'click .join-chat': function (evt, tmpl) {
     Session.set(App.CHATROOM_NAME, this.name);
+    $('body').toggleClass('disable-scroll');
   }
 });

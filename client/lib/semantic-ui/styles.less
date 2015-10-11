@@ -1,8 +1,63 @@
-@headerFont: -apple-system,".SFNSDisplay-Light","Helvetica Neue","Roboto","Segoe UI",sans-serif;
-@pagefont: -apple-system,".SFNSDisplay-Light","Helvetica Neue","Roboto","Segoe UI",sans-serif;
+@backgroundColor: white;
+@grey: #616161;
+@green: #8BC6B9;
 
 body {
   padding: 40px 0;
+}
+
+.overlay {
+  background-color: fadeout(@backgroundColor, 4%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.feed {
+  max-width: 450px;
+  margin: 40px auto;
+  overflow: auto;
+  position: relative;
+
+  @headerHeight: 40px;
+  @footerHeight: 40px;
+
+  header, footer {
+    position: absolute;
+    width: 100%;
+  }
+
+  header {
+    height: @headerHeight;
+    top: 0;
+  }
+
+  footer {
+    height: @footerHeight;
+    bottom:0;
+  }
+
+  #exitChatroom {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  ul {
+    margin-top: @headerHeight + 20px;
+    margin-bottom: @footerHeight + 20px;
+    height: 500px;
+    overflow-y: auto;
+  }
+
+  h1 {
+    color: @grey;
+    font-size: 30px;
+    font-weight: 400;
+  }
 }
 
 .top-header {
@@ -19,4 +74,8 @@ body {
 
 .join-chat {
   cursor: pointer;
+}
+
+.disable-scroll {
+  overflow-y: hidden;
 }

@@ -16,11 +16,15 @@ Template.chatroom.events({
       isTweet: false
     };
     var chatroom = Chatrooms.findOne({name: Session.get(App.CHATROOM_NAME)});
-    Chatrooms.update(chatroom._id, {$push: { entries: newMessage }});
+    Chatrooms.update(chatroom._id, {$push: { entries: newMessage }}, null, function () {
+      var $chat = $('.feed ul');
+      $chat.scrollTop($chat.prop('scrollHeight'));
+    });
     form.reset();
   },
   'click #exitChatroom': function(evt, tmpl) {
     Session.set(App.CHATROOM_NAME, false);
+    $('body').toggleClass('disable-scroll');
   }
 });
 
