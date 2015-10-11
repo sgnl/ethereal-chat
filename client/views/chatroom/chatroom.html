@@ -8,7 +8,7 @@
       <p>{{trendingDuration}}</p>
     </div>
   </header>
-  <ul>
+  <ul class="chatroom">
     {{#each entries}}
       {{#if isTweet}}
         {{> tweet}}
@@ -27,15 +27,17 @@
 </template>
 
 <template name="message">
-  <li>
+  <li class="message">
     <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_4_normal.png" alt="" class="avatar">
-    <p>{{message}}</p>
-    <span>{{timestamp}}</span>
+    <div class="content">
+      <span class="ui small timestamp">{{timestamp}}</span>
+      <p>{{message}}</p>
+    </div>
   </li>
 </template>
 
 <template name="tweet">
-  <li>
+  <li class="message-tweet">
     <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_2_normal.png" alt="" class="avatar">
     <span>{{timestamp}}</span>
   </li>
