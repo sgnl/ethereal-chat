@@ -11,7 +11,6 @@ Template.roomItems.events({
   'click .roomName': function (event, template) {
     event.preventDefault();
 
-    console.log(this.chatUrl);
-    Router.go(this.chatUrl);
+    Router.go(this.roomUrl);
   }
 });

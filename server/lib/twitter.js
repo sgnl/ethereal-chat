@@ -13,7 +13,7 @@ insertTrends = function insertTrends (woeid) {
         var currentTrend = trends[i];
         currentTrend.roomUrl = '/room/' + encodeURIComponent(currentTrend.name);
         Trends.insert(currentTrend);
-        createChatroom({ name: currentTrend.name, roomUrl: currentTrend.roomUrl });
+        createChatroom({ name: currentTrend.name });
       }
     }),function () { console.error('Failed to bind environment'); });
 };
