@@ -11,6 +11,9 @@
   <a href="{{roomUrl}}">
     <article class="grid-item">
       <h2>{{name}}</h2>
+      {{#each messages}}
+        <p>{{message}}</p>
+      {{/each}}
     </article>
   </a>
 </template>

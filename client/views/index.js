@@ -7,6 +7,12 @@ Template.index.helpers({
   }
 });
 
+Template.roomItems.helpers({
+  messages: function() {
+    return _.last(Chatrooms.findOne({name: this.name}).entries, 4);
+  }
+});
+
 Template.roomItems.events({
   'click .roomName': function (event, template) {
     event.preventDefault();
