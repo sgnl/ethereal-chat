@@ -1,9 +1,14 @@
 @backgroundColor: white;
 @grey: #616161;
 @green: #8BC6B9;
+@accent: @green;
+@cardText: #FFF;
 
 body {
   padding: 40px 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url('/images/ethereal_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .overlay {
@@ -14,11 +19,14 @@ body {
   right: 0;
   bottom: 0;
   z-index: 10;
+
+  .feed {
+    margin: 40px auto;
+  }
 }
 
 .feed {
   max-width: 450px;
-  margin: 40px auto;
   overflow: auto;
   position: relative;
 
@@ -62,10 +70,41 @@ body {
 
 .top-header {
   margin-bottom: 40px;
+  .ui.header {
+    color: lighten(@accent, 5%);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 8px;
+    font-weight: 600;
+  }
+}
+
+h2.trend-name {
+  color: @cardText;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.meta > p {
+  color: lighten(@accent, 10%);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
 .card-activity-content {
-  min-height: 100px;
+  min-height: 150px;
+  color: @cardText;
+  .event {
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    text-align: left;
+    p {
+      font-weight: 100;
+    }
+  }
 }
 
 .ui.sub.header.small {
@@ -74,8 +113,32 @@ body {
 
 .join-chat {
   cursor: pointer;
+  &.ui.card {
+    background: rgba(255, 255, 255, 0.4);
+    &:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
+  }
+  &.ui.card {
+    border-radius: 2px;
+  }
 }
 
 .disable-scroll {
   overflow-y: hidden;
+}
+
+.ui.cards > .card,
+.ui.card {
+  box-shadow: none;
+}
+
+.ui.cards > .card > .content,
+.ui.card > .content {
+  border-top: 0;
+}
+
+.ui.card {
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }

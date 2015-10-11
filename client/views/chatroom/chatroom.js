@@ -3,10 +3,19 @@ Template.chatroom.created = function () {
 };
 
 Template.chatroom.rendered = function () {
-
+  var $input = this.find('input');
+  if ($input) {
+    $input.focus();
+  }
 };
 
 Template.chatroom.events({
+  'keyup input': function (event) {
+    if (Session.get(App.CHATROOM_NAME) && event.keyCode === 27) {
+      Session.set(App.CHATROOM_NAME, false);
+      $('body').toggleClass('disable-scroll');
+    }
+  },
   'submit form': function (evt, tmpl) {
     evt.preventDefault();
     var form = evt.target;

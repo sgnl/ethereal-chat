@@ -1,6 +1,6 @@
 <template name="index">
   <header class="top-header">
-    <h1 class="ui header centered">Ethereal Chat</h1>
+    <h1 class="ui header centered">Ethereal</h1>
   </header>
   {{#if showChatroom}}
     <div class="overlay">
@@ -17,18 +17,17 @@
 </template>
 
 <template name="roomItems">
-  <article class="ui olive card grid-item join-chat">
+  <article class="ui card grid-item join-chat">
     <div class="content">
       <div class="header">
-        <h2>{{name}}</h2>
+        <h2 class="trend-name">{{name}}</h2>
       </div>
       <div class="meta">
-        1 day Trending
+        <p>1 day Trending</p>
       </div>
     </div>
     <div class="content">
       <div class="ui small feed">
-        <h4 class="ui sub header small">Activity</h4>
         <div class="content card-activity-content">
           {{#each messages}}
             <div class="event">
@@ -42,6 +41,5 @@
         </div>
       </div>
     </div>
-    <span class="ui button">Join the Chat!</span>
   </article>
 </template>
