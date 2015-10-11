@@ -5,6 +5,7 @@ if (Meteor.isServer) {
 
     // Clear trends on startup
     Trends.remove({});
+    Chatrooms.remove({});
 
     // Fetch current trends
     insertTrends();

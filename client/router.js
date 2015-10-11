@@ -9,8 +9,8 @@ Router.route('/', function(){
 
 Router.route('/room/:chatroom', function(){
   this.render('chatroom', {
-    data: {
-      chatroomName: this.params.chatroom
+    data: function () {
+      return Chatrooms.findOne({name: this.params.chatroom});
     }
   });
 });
