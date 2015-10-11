@@ -17,6 +17,9 @@ Template.index.helpers({
 Template.roomItems.helpers({
   messages: function() {
     return _.last(Chatrooms.findOne({name: this.name}).entries, 4);
+  },
+  trendingDuration: function () {
+    return moment(this.createdAt).fromNow(true) + " trending";
   }
 });
 
