@@ -10,7 +10,13 @@ insertTrends = function insertTrends (woeid) {
       }
       var trends = data[0].trends;
       for (var i = 0 ; i < trends.length; i++) {
-        Trends.insert(trends[i]);
+        var currentTrend = trends[i];
+        Trends.insert(currentTrend);
+        createChatroom({ name: currentTrend.name });
       }
     }),function () { console.error('Failed to bind environment'); });
 };
+
+function createChatroom (chatOptions) {
+  Chatrooms.insert({ name: chatOptions.name, entries: fakeEntries });
+}
