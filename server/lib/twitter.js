@@ -18,10 +18,6 @@ updateChatrooms = function updateChatrooms (woeid) {
 
     var remove = _.difference(chatroomNames, trendNames);
     var add = _.difference(trendNames, chatroomNames);
-    console.log("have: ", chatroomNames);
-    console.log("trends: ", trendNames);
-    console.log("remove ", remove.join(", "));
-    console.log("add ", add.join(", "));
     Chatrooms.remove({name: { $in: remove } });
 
     for (var i = 0 ; i < add.length; i++) {
