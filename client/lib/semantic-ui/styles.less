@@ -34,27 +34,28 @@ body {
 }
 
 .feed {
-  max-width: 450px;
-  overflow: auto;
-  position: relative;
-
   @headerHeight: 80px;
   @footerHeight: 40px;
 
-  header, footer {
-    position: absolute;
-    width: 100%;
+  .overlay & {
+    display: flex;
+    flex-flow: column;
+    max-width: 450px;
+    height: 100%;
+    padding-bottom: @footerHeight + 10px;
+    margin-bottom: @footerHeight + 10px;
   }
 
   header {
+    flex: 0 1 auto;
     height: @headerHeight;
-    top: 0;
+    padding-bottom: 5px;
     border-bottom: 1px solid @accent;
   }
 
   footer {
+    flex: 0 1 @footerHeight;
     height: @footerHeight;
-    bottom:0;
   }
 
   #exitChatroom {
@@ -65,9 +66,7 @@ body {
   }
 
   ul {
-    margin-top: @headerHeight + 20px;
-    margin-bottom: @footerHeight + 20px;
-    height: 500px;
+    flex: 1 1 auto;
     overflow-y: auto;
     list-style-type: none;
 
