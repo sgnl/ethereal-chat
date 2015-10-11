@@ -1,16 +1,49 @@
-@headerFont: -apple-system,".SFNSDisplay-Light","Helvetica Neue","Roboto","Segoe UI",sans-serif;
-@pagefont: -apple-system,".SFNSDisplay-Light","Helvetica Neue","Roboto","Segoe UI",sans-serif;
+@accent: #8BC6B9;
+@cardText: #FFF;
 
 body {
   padding: 40px 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url('/images/ethereal_bg.jpg');
 }
 
 .top-header {
   margin-bottom: 40px;
+  .ui.header {
+    color: lighten(@accent, 10%);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 8px;
+    font-weight: 500;
+  }
+}
+
+h2.trend-name {
+  color: @cardText;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.meta > p {
+  color: lighten(@accent, 10%);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 500;
 }
 
 .card-activity-content {
   min-height: 100px;
+  color: @cardText;
+  .event {
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    text-align: left;
+    p {
+      font-weight: 100;
+    }
+  }
 }
 
 .ui.sub.header.small {
@@ -19,4 +52,21 @@ body {
 
 .join-chat {
   cursor: pointer;
+  &.ui.card {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  &.ui.card {
+    border-radius: 0;
+  }
 }
+
+.ui.cards > .card,
+.ui.card {
+  box-shadow: none;
+}
+
+.ui.cards > .card > .content,
+.ui.card > .content {
+  border-top: 0;
+}
+
