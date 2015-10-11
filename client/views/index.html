@@ -1,10 +1,14 @@
 <template name="index">
   <h2>Ethereal</h2>
-  <section class="ui cards center grid">
-    {{#each trends}}
-      {{> roomItems}}
-    {{/each}}
-  </section>
+  {{#if showChatroom}}
+    {{> chatroom}}
+  {{else}}
+    <section class="ui cards center grid">
+      {{#each trends}}
+        {{> roomItems}}
+      {{/each}}
+    </section>
+  {{/if}}
 </template>
 
 <template name="roomItems">
@@ -34,7 +38,7 @@
           </div>
       </div>
       </div>
-      <a class="ui button" href="{{roomUrl}}">Join the Chat!</a>
+      <button type="button" class="ui button join-chat">Join the Chat!</button>
     </article>
   <!-- </a> -->
 </template>
