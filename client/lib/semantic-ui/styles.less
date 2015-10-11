@@ -23,6 +23,14 @@ body {
   .feed {
     margin: 40px auto;
   }
+
+  header, ul {
+    padding: 0 10px;
+  }
+
+  h1 a {
+    color: @grey;
+  }
 }
 
 .feed {
@@ -30,7 +38,7 @@ body {
   overflow: auto;
   position: relative;
 
-  @headerHeight: 40px;
+  @headerHeight: 80px;
   @footerHeight: 40px;
 
   header, footer {
@@ -41,6 +49,7 @@ body {
   header {
     height: @headerHeight;
     top: 0;
+    border-bottom: 1px solid @accent;
   }
 
   footer {
